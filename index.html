@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Love Letter</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffe6eb;
+    overflow:hidden;
+}
+
+/* Floating Hearts */
+body::before{
+    content:"💖 💕 💖 💕 💖";
+    position:absolute;
+    top:-20px;
+    left:0;
+    width:100%;
+    font-size:25px;
+    animation:fall 10s linear infinite;
+    opacity:0.5;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-100px);
+    }
+    100%{
+        transform:translateY(100vh);
+    }
+}
+
+/* Main Window */
+.letter-window{
+    width:350px;
+    background:#fff0f3;
+    border:5px solid #ff8fab;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    position:relative;
+}
+
+/* Top Bar */
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.top-bar span{
+    color:#ff4d6d;
+    font-weight:bold;
+}
+
+/* Title */
+#letter-title{
+    font-size:28px;
+    color:#ff2e63;
+    margin-bottom:15px;
+}
+
+/* Cat Image */
+.cat{
+    width:180px;
+    margin-bottom:20px;
+}
+
+/* Buttons */
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.btn{
+    border:none;
+    padding:12px 25px;
+    border-radius:12px;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.3s;
+    color:white;
+}
+
+.yes-btn{
+    background:#ff2e63;
+}
+
+.yes-btn:hover{
+    transform:scale(1.1);
+}
+
+.no-btn{
+    background:#999;
+}
+
+.no-btn:hover{
+    transform:scale(1.1);
+}
+
+/* Final Message */
+.final-text{
+    margin-top:20px;
+    font-size:30px;
+    color:#ff0066;
+    display:none;
+    animation:pop 0.5s ease;
+}
+
+@keyframes pop{
+    from{
+        transform:scale(0);
+    }
+    to{
+        transform:scale(1);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="letter-window">
+
+    <div class="top-bar">
+        <span>LOVE</span>
+        <span>♡ ♡ ♡</span>
+    </div>
+
+    <h1 id="letter-title">
+        তুমি কি আমার রাজ্যের রানি হবে মেডাম ? <br>
+        (answer: yes / no)
+    </h1>
+
+    <img src="https://media.tenor.com/4N7bJQ1K0McAAAAi/cute-cat.gif"
+    class="cat">
+
+    <div class="buttons">
+
+        <button class="btn yes-btn" id="yesBtn">
+            YES
+        </button>
+
+        <button class="btn no-btn" id="noBtn">
+            NO
+        </button>
+
+    </div>
+
+    <div class="final-text" id="finalText">
+        I Love You বউ জানু ❤️
+    </div>
+
+</div>
+
+<script>
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const finalText = document.getElementById("finalText");
+
+/* YES Button */
+yesBtn.onclick = () => {
+    finalText.style.display = "block";
+}
+
+/* NO Button Run Away */
+noBtn.addEventListener("mouseover", () => {
+
+    const x = Math.floor(Math.random() * 250) - 100;
+    const y = Math.floor(Math.random() * 250) - 100;
+
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+</script>
+
+</body>
+</html>
